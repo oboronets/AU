@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3  # указывает Unix-подобным системам, какой интерпретатор использовать
+# -*- coding: utf-8 -*-  # исполизуется кодировка UTF-8
 
 import math  # подключение пакета math
 import numpy  # подключение пакета numpy
