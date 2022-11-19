@@ -21,4 +21,4 @@ first_num = int(input())
 second_num = int(input())
 
 res = extended_gcd(first_num, second_num)
-print(res)
+print(first_num, "*", res[1], " + ", second_num, "*", res[2], " = ", res[0])
