@@ -1,22 +1,53 @@
+#!/usr/bin/env python3
+"""
+Making fractal using turtle
+"""
+# -*- coding: utf-8 -*-
 import turtle as tl
 
-def draw_fractal(scale):
-    if scale >= 5:
-        draw_fractal(scale / 3.0)
-        tl.left(2)
-        draw_fractal(scale / 3.0)
-        tl.right(4)
-        draw_fractal(scale / 3.0)
-        tl.left(6)
-        draw_fractal(scale / 3.0)
-    else:
-        tl.forward(scale)
+SHIFT = 3  # Рисует квадраты если SHIFT = SCALE
 
-scale = 1000
-tl.pensize(2)
+def draw_fractal(scale):
+    """
+    Algorithm for turtle
+    """
+    if scale >= 5:
+        draw_fractal(scale - 1)
+        tl.left(90)
+        tl.forward(2**(scale - SHIFT))
+        draw_fractal(scale - 1)
+        tl.right(90)
+        tl.forward(2**(scale - SHIFT))
+        draw_fractal(scale - 1)
+        tl.right(90)
+        tl.forward(2**(scale - SHIFT))
+        draw_fractal(scale - 1)
+        tl.right(90)
+        tl.forward(2**(scale - SHIFT))
+        draw_fractal(scale - 1)
+        tl.left(90)
+        tl.forward(2**(scale - SHIFT))
+        draw_fractal(scale - 1)
+        tl.left(90)
+        tl.forward(2**(scale - SHIFT))
+        draw_fractal(scale - 1)
+        tl.left(90)
+        tl.forward(2**(scale - SHIFT))
+        draw_fractal(scale - 1)
+        tl.right(90)
+        tl.forward(2**(scale - SHIFT))
+        draw_fractal(scale - 1)
+    else:
+        tl.forward(2**(scale - SHIFT))
+
+
+SCALE = 7
+
+tl.pensize(1)
+tl.speed(0) # fastest
 tl.penup()
-tl.goto(-400, -100)
+tl.goto(0, 0)  # if SCALE > 7, move left (-600, 0)
 tl.pendown()
 
-draw_fractal(scale)
+draw_fractal(SCALE)
 tl.done()
