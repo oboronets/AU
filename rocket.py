@@ -43,7 +43,6 @@ class Body:
         self.trajectory_x.append(self.x)
         self.trajectory_y.append(self.y)
 
-        self.vy -= MODEL_G * MODEL_DT
         self.x += self.vx * MODEL_DT
         self.y += self.vy * MODEL_DT
 
@@ -69,8 +68,6 @@ class Rocket(Body):
         Направление скорости - к цели
         """
         self.target_pos(target)
-        self.trajectory_x.append(self.x)
-        self.trajectory_y.append(self.y)
         self.vy -= MODEL_G * MODEL_DT
 
         dist = math.sqrt( (self.x - self.target_x)**2 + (self.y - self.target_y)**2)
@@ -78,9 +75,8 @@ class Rocket(Body):
 
         self.vx = mod_v * ( - self.x + self.target_x ) / dist  # Поворот в сторону цели
         self.vy = mod_v * ( - self.y + self.target_y ) / dist
-
-        self.x += self.vx * MODEL_DT
-        self.y += self.vy * MODEL_DT
+        
+        super().advance()
 
 class Plane(Body):
     def __init__(self, x, y):
@@ -93,12 +89,8 @@ class Plane(Body):
         """
         Выполнить шаг мат. модели применительно к телу, предварительно записав его координаты
         """
-        self.trajectory_x.append(self.x)
-        self.trajectory_y.append(self.y)
-
         self.vy -= MODEL_G /4 * MODEL_DT  # медлеенно снижается
-        self.x += self.vx * MODEL_DT
-        self.y += self.vy * MODEL_DT
+        super().advance()
 
 p = Plane(0, 5000)
 r = Rocket(p)
