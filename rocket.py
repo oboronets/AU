@@ -42,7 +42,6 @@ class Body:
         """
         self.trajectory_x.append(self.x)
         self.trajectory_y.append(self.y)
-
         self.x += self.vx * MODEL_DT
         self.y += self.vy * MODEL_DT
 
@@ -75,7 +74,6 @@ class Rocket(Body):
 
         self.vx = mod_v * ( - self.x + self.target_x ) / dist  # Поворот в сторону цели
         self.vy = mod_v * ( - self.y + self.target_y ) / dist
-        
         super().advance()
 
 class Plane(Body):
@@ -89,7 +87,7 @@ class Plane(Body):
         """
         Выполнить шаг мат. модели применительно к телу, предварительно записав его координаты
         """
-        self.vy -= MODEL_G /4 * MODEL_DT  # медлеенно снижается
+        self.vy -= MODEL_G /4 * MODEL_DT  # медленно снижается
         super().advance()
 
 p = Plane(0, 5000)
