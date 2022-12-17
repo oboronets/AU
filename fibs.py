@@ -3,7 +3,7 @@
 Print first N fibonacci numbers
 """
 #  -*- coding: utf-8 -*-
-
+import itertools
 N = 130
 class Fibs:
     """
@@ -14,14 +14,15 @@ class Fibs:
         """Внутренний класс — итератор"""
         def __init__(self):
             self.i = 0
-            self.fibs_to_rem = [1, 1]
+            self.first = 1
+            self.second = 1
 
         def __next__(self):
             if self.i < N:
-                self.fibs_to_rem[1] = self.fibs_to_rem[0] + self.fibs_to_rem[1]
-                self.fibs_to_rem[0] = self.fibs_to_rem[1] - self.fibs_to_rem[0]
+                self.second = self.first + self.second
+                self.first = self.second - self.first
                 self.i += 1
-                return self.fibs_to_rem[1] - self.fibs_to_rem[0]
+                return self.second - self.first
             raise StopIteration()
 
     def __iter__(self):
@@ -30,12 +31,10 @@ class Fibs:
 
 f = Fibs()
 fi = iter(f)
-i = 0
+j = 1
 
-while True:
-    i += 1
-    try:
-        print(i, next(fi))
-    except StopIteration:
-        print("Done")
-        break
+for i, f in zip(
+    itertools.count(j),
+    itertools.islice(f, j, j + 10)
+):
+    print(i, f)
