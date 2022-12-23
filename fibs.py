@@ -4,7 +4,7 @@ Print first N fibonacci numbers
 """
 #  -*- coding: utf-8 -*-
 import itertools
-N = 1
+N = 20
 class Fibs:
     """
     По объектам этого класса можно итерироваться и получать 10 чисел Фибоначчи,
@@ -19,12 +19,10 @@ class Fibs:
             self.second = 1
 
         def __next__(self):
-            if self.i < N + 9:
-                self.second = self.first + self.second
-                self.first = self.second - self.first
-                self.i += 1
-                return self.second - self.first
-            raise StopIteration()
+            self.second = self.first + self.second
+            self.first = self.second - self.first
+            self.i += 1
+            return self.second - self.first
 
     def __iter__(self):
         """Создать и вернуть итератор"""
@@ -34,7 +32,7 @@ f = Fibs()
 fi = iter(f)
 
 for i, f in zip(
-    itertools.count(N),
-    itertools.islice(f, N - 1, N + 9)
+    itertools.count(1),
+    itertools.islice(f, 0, N)
 ):
     print(i, f)
