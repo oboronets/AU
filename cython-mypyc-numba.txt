@@ -1,0 +1,6 @@
+Результаты:
+pure_python ~0.248
+pure_cython ~0.224
+pyx_cython ~0.0429
+mypy_python ~0.0745
+numba ~0.518
