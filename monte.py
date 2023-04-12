@@ -4,6 +4,7 @@ Monte Carlo method for Weierstrass function
 """
 import math
 import random
+import timeit
 A = 3  # график в википедии...
 B = 0.5  # 2**(-50) достаточно мало
 
@@ -23,3 +24,4 @@ def monte_carlo_wei():
     return approx
 
 print(monte_carlo_wei())
+# print(timeit.timeit(monte_carlo_wei, number=1))  # ~13.172
