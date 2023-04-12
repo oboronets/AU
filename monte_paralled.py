@@ -46,4 +46,4 @@ def monte_carlo_wei():
     return approx
 
 print(timeit.timeit(monte_carlo_wei, number=10) / 10)
-#Result: 13.172  -->  2.988 (вариант 2)  -->  2.937 (вариант 1)
+#Result: 7.187  -->  2.988 (вариант 2)  -->  2.937 (вариант 1)
