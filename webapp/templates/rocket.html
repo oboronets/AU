@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Rocket.py теперь в веб версии!</p>
+<form action="/rocket/result">
+  <h3> Параметры самолета: </h3>
+  <label for="plane_vx"> Горизонтальная скорость (vx), диапазон: (-300, 300) м/с </label>
+  <input type="number" id="plane_vx" name="plane_vx" max=300 min=-300><br>
+  <label for="plane_vy"> Вертикальная скорость (vy), диапазон: (-100, 100) м/с </label>
+  <input type="number" id="plane_vy" name="plane_vy" max=100 min=-100><br>
+  <label for="max_time"> Максимальное время подлета, с </label>
+  <input type="number" id="max_time" name="max_time" min=0><br>
+  <h3> Параметры ракеты: </h3>
+  <label for="rocket_v"> Начальная скорость, диапазон: (0, 340) м/с </label>
+  <input type="number" id="rocket_v" name="rocket_v" max=340 min=0><br>
+  <input type="submit" value="Сохранить">
+</form>
+<label id="popal" style="visibility:{{ visibility }}"> Не попал! </label>
+{% endblock %}
