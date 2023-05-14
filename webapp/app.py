@@ -1,15 +1,10 @@
 """
 Rocket qt'ed
 """
-import sys
 import flask
-
-from matplotlib import pyplot as pp
-
 from launch import Launch
 
 app = flask.Flask(__name__)
-visibility = "hidden"
 
 @app.route("/")
 def hello_world():
@@ -19,9 +14,13 @@ def hello_world():
 def murka():
     return flask.render_template('murka.html')
 
+@app.route("/lab")
+def lab():
+    return flask.render_template('lab.html')
+
 @app.route("/rocket")
 def rocket_page():
-    return flask.render_template('rocket.html', visibility = visibility)
+    return flask.render_template('rocket.html', visibility = 'hidden')
 
 @app.route("/rocket/result")
 def rocket_result():
@@ -33,7 +32,5 @@ def rocket_result():
     launch = Launch(plane_vx, plane_vy, max_time, rocket_v)
     podlet = int( launch.launch_rocket() )
     if podlet > 0:
-        visibility = "hidden"
-        return flask.render_template('rocket_result.html')
-    visibility = "visible"
-    return flask.render_template('rocket.html', visibility=visibility)
+        return flask.render_template('rocket_result.html', visibility='hidden')
+    return flask.render_template('rocket.html', visibility='visible')

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 id="статистика">Критерий Колмогорова-Смирнова</h2>
+<p>(Statistic, pvalue) <br>
+Нормальное распредление: (0.00405, 0.753) <br>
+Резисторы: (0.108, 0.566)   # Действительно случайное <br>
+Отсчет 10 секунд: (0.139, 0.263)   # Совсем плохо</p>
+
+<ul>
+  <li><a href="{{ url_for('static', filename='report.pdf') }}"> Отчет, переделанный на r markdown</a>;</li>
+  <li><a href="{{ url_for('static', filename='lab.ipynb') }}">Блокнот<a>;</li>
+</ul>
+
+{% endblock %}
